@@ -362,20 +362,19 @@ if (!isNaN(parseFloat(b)) && isFinite(b)){
 				xx=(a+b+c)/2;			  
 						xx=xx*(xx-a)*(xx-b)*(xx-c)						
 						xx=Math.sqrt(xx);	  
-						alert("Треугольник существует"+" "+xx);	
+				 myApp.alert(xx, 'Результат');
 			}
 		}	
 	}
     else{
-		alert("Треугольник не существует. Введите корректные значения");
+		  myApp.alert('Введите верное числовое значение. Треугольник с такими сторонами не существует', 'Ошибка!');
 	};
  }}}
 	else
-{alert("Введите числовые значения")
+{
+	  myApp.alert('Треугольник не существует. Введите корректные значения', 'Ошибка!');
 
 };
-	
-
 
 xx=0;	
 	  
@@ -388,39 +387,46 @@ a=parseInt(document.FormThoo.st1.value);
 b=parseInt(document.FormThoo.st2.value);		
 yg1=parseInt(document.FormThoo.ygol1.value);	
 
+a1=document.FormThoo.st1.value;
+b1=document.FormThoo.st2.value;
+yg2=document.FormThoo.ygol1.value;	
 
 	
 //Проверка на числа
-if (!isNaN(parseFloat(yg1)) && isFinite(yg1)){	
-if (!isNaN(parseFloat(a)) && isFinite(a)){
- if (!isNaN(parseFloat(b)) && isFinite(b)){
-	  	
+if (!isNaN(parseFloat(yg2)) && isFinite(yg2)){	
+if (!isNaN(parseFloat(a1)) && isFinite(a1)){
+ if (!isNaN(parseFloat(b1)) && isFinite(b1)){
+
 yg1=Math.sin(yg1 / 180 * Math.PI);	
 yg1=(0.5)*(yg1*a*b);	
-alert(yg1);	  
+	  myApp.alert(yg1, 'Результат');  
 }}}
 	else		
 {
-	alert("Введите числовые значения")
+	  myApp.alert('Введите числовое значение', 'Ошибка!');
 };		
 };
 
+var fn3a;
+var fn3b;
 
 function fn3(){	
 a=parseInt(document.Formonex.osnov.value);
 b=parseInt(document.Formonex.visota.value);
 	
-	var fn3a=document.Formonex.osnov.value;
-	var fn3b=document.Formonex.visota.value;
+fn3a=document.Formonex.osnov.value;
+fn3b=document.Formonex.visota.value;
+
 	
-	if (!isNaN(parseFloat(a)) && isFinite(a)){
- if (!isNaN(parseFloat(b)) && isFinite(b)){
-	 		alert("есть значение"+" "+fn3a+"  "+fn3b);
+	if (!isNaN(parseFloat(fn3a)) && isFinite(fn3a)){
+ if (!isNaN(parseFloat(fn3b)) && isFinite(fn3b)){
+
+
 		xx=(0.5)*a*b;
-	    alert(xx);
+	    myApp.alert(xx, 'Результат');
  }}
 		else{		
-	alert("Введите числовые значения")
+		myApp.alert('Введите числовое значение', 'Ошибка!');
 		};
 };
 	
@@ -438,3 +444,66 @@ function check111(){
 	alert("есть значение"+" "+ss);
 	}
 };
+
+//Вывод сообщения об ошибке ввода
+$$('.alert-text-title').on('click', function () {
+    myApp.alert('Введите числовое значение', 'Ошибка!');
+});
+
+
+
+//Рекламный баннер
+
+var admobid = {}
+if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
+  admobid = {
+    banner: 'ca-app-pub-3940256099942544/6300978111',
+    interstitial: 'ca-app-pub-3940256099942544/1033173712',
+  }
+} else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {  // for ios
+  admobid = {
+    banner: 'ca-app-pub-3940256099942544/2934735716',
+    interstitial: 'ca-app-pub-3940256099942544/4411468910',
+  }
+}
+
+document.addEventListener('deviceready', function() {
+  admob.banner.config({
+    id: admobid.banner,
+    isTesting: true,
+    autoShow: true,
+  })
+  admob.banner.prepare()
+
+  admob.interstitial.config({
+    id: admobid.interstitial,
+    isTesting: true,
+    autoShow: false,
+  })
+  admob.interstitial.prepare()
+
+  document.getElementById('showAd').disabled = true
+  document.getElementById('showAd').onclick = function() {
+    admob.interstitial.show()
+  }
+
+}, false)
+
+document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
+  console.log(event)
+})
+
+document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
+  console.log(event)
+})
+
+document.addEventListener('admob.interstitial.events.LOAD', function(event) {
+  console.log(event)
+  document.getElementById('showAd').disabled = false
+})
+
+document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
+  console.log(event)
+
+  admob.interstitial.prepare()
+}) 
