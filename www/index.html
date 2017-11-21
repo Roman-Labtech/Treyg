@@ -54,14 +54,11 @@ if (view.history.length > 1) {
 view.router.back();
 return;
 }
-
 else{
- navigator.notification.confirm(
-            'Вы хотите выйти?',  // message
-            exitApp,              // callback to invoke with index of button pressed
-            'Выход',            // title
-            'Нет,Да'         // buttonLabels
-        );
+	navigator.app.exitApp();
+}
+				
+
 };	
 
  
