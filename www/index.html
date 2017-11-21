@@ -55,9 +55,12 @@ view.router.back();
 return;
 }
 else{
-	navigator.app.exitApp();
-}
-				
+    myApp.confirm('Вы ?', function () {
+        myApp.alert('Вы нажали кнопку ОК');
+		navigator.app.exitApp();
+    });
+
+}	
 
 };	
 
