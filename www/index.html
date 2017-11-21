@@ -48,39 +48,33 @@ f7.closePanel();
 return;
 }
 / Check for go back in history /
-alert("a1");				
 var view = f7.getCurrentView();
+if (!view) return;
 if (view.history.length > 1) {
 view.router.back();
-alert("a2");	
 return;
-alert("a3");}
-alert("a4");				
-else{
-alert("a5");	
-Exitapp ();
-};									
-if (!view) return;
+}
+Quit app /
+navigator.notification.confirm(
+‘Exit Application ?’, // message
+function (n) {
+if (n == 1) navigator.app.exitApp();
+},
+‘Bite To Eat’, // title
+['OK', ‘Cancel’] // button labels
+);
+}, false)
 
-});	
-
+             } </script>
+ <script>
  
-function exitApp()
-{
-navigator.app.exitApp();
-};
+	 function exitFromApp()
+       {
+        navigator.app.exitApp();
+       }; 
+      </script>   
 				 
-function Confirm() {
-	navigator.notification.confirm(
-		'You are the winner!',  // message
-		exitApp,              // callback to invoke with index of button pressed
-		'Game Over',            // title
-		'Restart,Exit'          // buttonLabels
-	);
->
-};				 
-				 
-</script>                        
+                      
  </head>
 
 
@@ -363,3 +357,13 @@ function check111(){
     </script>
   </body>
 </html>
+
+
+
+
+
+
+     
+
+
+	
