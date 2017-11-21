@@ -48,11 +48,16 @@ f7.closePanel();
 return;
 }
 / Check for go back in history /
+alert("a1");				
 var view = f7.getCurrentView();
 if (view.history.length > 1) {
 view.router.back();
-return;}
+alert("a2");	
+return;
+alert("a3");}
+alert("a4");				
 else{
+alert("a5");	
 Exitapp ();
 };									
 if (!view) return;
@@ -258,7 +263,8 @@ function Confirm() {
             <div class="right">
               <!-- Right link contains only icon - additional "icon-only" class-->
                 <a href="#" class="link icon-only"> 
-              <i class="icon icon-bars"></i></a>
+              <i class="icon icon-bars"></i><i class="icon icon-exit"></i>
+              </a>
             </div>
           </div>
         </div>
