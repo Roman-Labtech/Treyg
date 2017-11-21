@@ -55,26 +55,23 @@ if (view.history.length > 1) {
 view.router.back();
 return;
 }
-Quit app /
-navigator.notification.confirm(
-‘Exit Application ?’, // message
-function (n) {
-if (n == 1) navigator.app.exitApp();
-},
-‘Bite To Eat’, // title
-['OK', ‘Cancel’] // button labels
-);
-}, false)
 
-             } </script>
- <script>
+else{
+ navigator.notification.confirm(
+            'Вы хотите выйти?',  // message
+            exitApp(),              // callback to invoke with index of button pressed
+            'Выход',            // title
+            'Нет,Да'         // buttonLabels
+        );
+};	
+
  
-	 function exitFromApp()
-       {
-        navigator.app.exitApp();
-       }; 
-      </script>         
-  </head>
+function exitApp()
+{
+navigator.app.exitApp();
+}; 
+</script>                        
+ </head>
 
 
   <body onload="startTime()" class="theme-black" onload="onLoad()">
