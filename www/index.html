@@ -37,8 +37,7 @@
     </script> 
      
   <script type="text/javascript" charset="utf-8" src="js/cordova_plugins.js">
-  </script>
-   <script> 
+
 	   document.addEventListener("deviceready", appReady, false); 
              function appReady(){ 
             document.addEventListener('backbutton', function (e) {
@@ -59,7 +58,7 @@ return;
 else{
  navigator.notification.confirm(
             'Вы хотите выйти?',  // message
-            exitApp(),              // callback to invoke with index of button pressed
+            exitApp,              // callback to invoke with index of button pressed
             'Выход',            // title
             'Нет,Да'         // buttonLabels
         );
