@@ -49,14 +49,13 @@ return;
 }
 / Check for go back in history /
 var view = f7.getCurrentView();
-if (!view) return;
 if (view.history.length > 1) {
 view.router.back();
-return;
-}
+return;}
 else{
-Confirm();
-}	
+Exitapp ();
+};									
+if (!view) return;
 
 });	
 
