@@ -65,7 +65,17 @@ else{
 function exitApp()
 {
 navigator.app.exitApp();
-}; 
+};
+				 
+function showConfirm() {
+	navigator.notification.confirm(
+		'You are the winner!',  // message
+		exitApp,              // callback to invoke with index of button pressed
+		'Game Over',            // title
+		'Restart,Exit'          // buttonLabels
+	);
+};				 
+				 
 </script>                        
  </head>
 
@@ -265,6 +275,7 @@ navigator.app.exitApp();
                        <p style="text-align:justify;">
                         <img src="img/treyg.png" style="width:100%">
             Площадь геометрической фигуры (треугольника) - численная характеристика геометрической фигуры показывающая размер этой фигуры (части поверхности, ограниченной замкнутым контуром данной фигуры). Величина площади выражается числом заключающихся в нее квадратных единиц.
+                   <input type="button" onclick="confirm()">
                     </p>
                     
                      <script type="text/javascript">
