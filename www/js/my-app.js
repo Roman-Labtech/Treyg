@@ -460,7 +460,7 @@ document.FormThoo.ygol2.active==true;
 
 
 $$('.confirm-ok').on('click', function () {
-    myApp.confirm('Вы уверены?', function () {
+    myApp.confirm('Вы ?', function () {
         myApp.alert('Вы нажали кнопку ОК');
 		navigator.app.exitApp();
     });
